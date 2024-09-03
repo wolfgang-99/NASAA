@@ -26,6 +26,11 @@ app.secret_key = os.getenv("secret_key")
 os.makedirs('temp', exist_ok=True)
 
 
+@app.route('/', methods=['GET'])
+def home():
+    return jsonify({"message": "Welcome to the NASAA API of art"}), 200
+
+
 @app.route('/api/upload_img', methods=['POST'])
 def upload_image():
     if 'image' not in request.files:
